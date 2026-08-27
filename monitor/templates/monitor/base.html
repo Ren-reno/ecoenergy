@@ -8,10 +8,12 @@
 </head>
 <body class="bg-light">
     <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#1f6f4a;">
-        <a class="navbar-brand fw-semibold" href="{% url 'monitor:listado' %}">⚡ EcoEnergy Monitor</a>
-        <div class="d-flex gap-2">
-            <a class="btn btn-outline-light btn-sm" href="{% url 'monitor:listado' %}">Ver zonas</a>
-            <a class="btn btn-outline-light btn-sm" href="{% url 'resumen_zonas' %}">Resumen por zona</a>
+        <div class="container">
+            <a class="navbar-brand fw-semibold" href="{% url 'monitor:listado' %}">⚡ EcoEnergy Monitor</a>
+            <div class="d-flex gap-2">
+                <a class="btn btn-outline-light btn-sm" href="{% url 'monitor:listado' %}">Ver zonas</a>
+                <a class="btn btn-outline-light btn-sm" href="{% url 'resumen_zonas' %}">Resumen por zona</a>
+            </div>
         </div>
     </nav>
 

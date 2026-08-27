@@ -21,6 +21,7 @@ def vista_detalle(request, zona_id):
 
     return render(request, 'monitor/detalle.html', {'zona': detalle})
 
+
 def vista_resumen_zonas(request):
     """
     Muestra la vista general "Resumen de consumo por zona" (nuevo
