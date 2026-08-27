@@ -1,0 +1,74 @@
+{% extends 'monitor/base.html' %}
+
+{% block titulo %}Resumen de consumo por zona · EcoEnergy Monitor{% endblock %}
+
+{% block contenido %}
+    <div class="mb-4">
+        <h1 class="mb-1">Resumen de consumo por zona</h1>
+        <p class="text-muted mb-0">Datos agrupados desde zonas.json y dispositivos.json</p>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-3 g-3 mb-4">
+        <div class="col">
+            <div class="card border-0 shadow-sm h-100" style="background-color:#e7f6ec;">
+                <div class="card-body">
+                    <h6 class="text-uppercase text-muted small mb-1">Zonas</h6>
+                    <p class="fs-3 fw-semibold mb-0">{{ total_zonas }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card border-0 shadow-sm h-100" style="background-color:#e7f1fb;">
+                <div class="card-body">
+                    <h6 class="text-uppercase text-muted small mb-1">Dispositivos</h6>
+                    <p class="fs-3 fw-semibold mb-0">{{ total_dispositivos }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card border-0 shadow-sm h-100" style="background-color:#fdf3df;">
+                <div class="card-body">
+                    <h6 class="text-uppercase text-muted small mb-1">Consumo total</h6>
+                    <p class="fs-3 fw-semibold mb-0">{{ consumo_total_general }} kWh</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% if zonas %}
+        <div class="table-responsive">
+            <table class="table table-hover align-middle bg-white">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Zona</th>
+                        <th class="text-end">Dispositivos</th>
+                        <th class="text-end">Consumo</th>
+                        <th class="text-end">Límite</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for zona in zonas %}
+                        <tr>
+                            <td>{{ zona.nombre }}</td>
+                            <td class="text-end">{{ zona.total_dispositivos }}</td>
+                            <td class="text-end">{{ zona.consumo_total }} kWh</td>
+                            <td class="text-end">{{ zona.limite_kwh }} kWh</td>
+                            <td>
+                                {% if zona.dentro_del_limite %}
+                                    <span class="badge rounded-pill text-bg-success">✓ {{ zona.estado }}</span>
+                                {% else %}
+                                    <span class="badge rounded-pill text-bg-danger">⚠ {{ zona.estado }}</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <div class="alert alert-warning" role="alert">
+            Todavía no hay zonas disponibles para mostrar en el resumen.
+        </div>
+    {% endif %}
+{% endblock %}
