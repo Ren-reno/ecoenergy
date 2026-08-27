@@ -134,3 +134,39 @@ def obtener_detalle_zona(zona_id):
         'margen_disponible': zona['limite_kwh'] - consumo_total,
         'estado': 'ALERTA' if consumo_total > zona['limite_kwh'] else 'NORMAL',
     }
+
+def resumen_por_zona():
+    """
+    Arma el resumen agregado de consumo por zona (Fase 2): para cada zona,
+    cantidad de dispositivos, consumo total, limite y estado; ademas de los
+    tres totales generales (zonas, dispositivos, consumo total del sistema)
+    usados en las tarjetas superiores de la interfaz "Resumen de consumo por
+    zona". Una zona sin dispositivos se incluye igual, con cantidad 0,
+    consumo 0 y estado 'DENTRO DEL LIMITE'.
+    """
+    zonas = cargar_zonas()
+    dispositivos = cargar_dispositivos()
+    dispositivos_por_zona = _indexar_dispositivos_por_zona(dispositivos)
+
+    resumen_zonas = []
+    for zona in zonas:
+        dispositivos_zona = dispositivos_por_zona.get(zona['id'], [])
+        consumo_total = sum(dispositivo['consumo_kwh'] for dispositivo in dispositivos_zona)
+        dentro_del_limite = consumo_total <= zona['limite_kwh']
+
+        resumen_zonas.append({
+            'id': zona['id'],
+            'nombre': zona['nombre'],
+            'total_dispositivos': len(dispositivos_zona),
+            'consumo_total': consumo_total,
+            'limite_kwh': zona['limite_kwh'],
+            'dentro_del_limite': dentro_del_limite,
+            'estado': 'DENTRO DEL LÍMITE' if dentro_del_limite else 'LÍMITE SUPERADO',
+        })
+
+    return {
+        'zonas': resumen_zonas,
+        'total_zonas': len(zonas),
+        'total_dispositivos': len(dispositivos),
+        'consumo_total_general': sum(dispositivo['consumo_kwh'] for dispositivo in dispositivos),
+    }
