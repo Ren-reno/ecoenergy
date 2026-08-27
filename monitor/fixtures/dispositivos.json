@@ -1,0 +1,65 @@
+[
+  {
+    "id": 1,
+    "nombre": "Chiller torre A",
+    "consumo_kwh": 210,
+    "zona_id": 1,
+    "categoria_id": 1
+  },
+  {
+    "id": 2,
+    "nombre": "Iluminacion LED planta baja",
+    "consumo_kwh": 25,
+    "zona_id": 1,
+    "categoria_id": 2
+  },
+  {
+    "id": 3,
+    "nombre": "Compresor linea de embalaje",
+    "consumo_kwh": 300,
+    "zona_id": 1,
+    "categoria_id": 3
+  },
+  {
+    "id": 4,
+    "nombre": "Extractor de aire bodega",
+    "consumo_kwh": 40,
+    "zona_id": 1,
+    "categoria_id": 1
+  },
+  {
+    "id": 5,
+    "nombre": "Panel de control automatizado",
+    "consumo_kwh": 15,
+    "zona_id": 2,
+    "categoria_id": 3
+  },
+  {
+    "id": 6,
+    "nombre": "Luces de emergencia pasillo",
+    "consumo_kwh": 10,
+    "zona_id": 2,
+    "categoria_id": 2
+  },
+  {
+    "id": 7,
+    "nombre": "Motor banda transportadora",
+    "consumo_kwh": 180,
+    "zona_id": 3,
+    "categoria_id": 3
+  },
+  {
+    "id": 8,
+    "nombre": "Aire acondicionado sala servidores",
+    "consumo_kwh": 140,
+    "zona_id": 3,
+    "categoria_id": 1
+  },
+  {
+    "id": 9,
+    "nombre": "Iluminacion exterior estacionamiento",
+    "consumo_kwh": 35,
+    "zona_id": 3,
+    "categoria_id": 2
+  }
+]

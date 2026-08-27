@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "nombre": "Climatizacion",
+    "descripcion": "Equipos de frio, calor y ventilacion industrial"
+  },
+  {
+    "id": 2,
+    "nombre": "Iluminacion",
+    "descripcion": "Luminarias interiores y exteriores"
+  },
+  {
+    "id": 3,
+    "nombre": "Maquinaria y automatizacion",
+    "descripcion": "Motores, compresores y paneles de control"
+  }
+]

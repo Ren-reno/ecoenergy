@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "nombre": "Planta Industrial",
+    "limite_kwh": 550
+  },
+  {
+    "id": 2,
+    "nombre": "Oficinas Administrativas",
+    "limite_kwh": 80
+  },
+  {
+    "id": 3,
+    "nombre": "Centro de Distribucion",
+    "limite_kwh": 400
+  },
+  {
+    "id": 4,
+    "nombre": "Deposito Anexo Sur",
+    "limite_kwh": 100
+  }
+]
