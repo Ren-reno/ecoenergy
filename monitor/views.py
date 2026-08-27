@@ -1,7 +1,7 @@
 from django.http import Http404
 from django.shortcuts import render
 
-from .utils import listar_zonas_con_conteo, obtener_detalle_zona
+from .utils import listar_zonas_con_conteo, obtener_detalle_zona, resumen_por_zona
 
 
 def vista_listado(request):
@@ -20,3 +20,14 @@ def vista_detalle(request, zona_id):
         raise Http404(f"No existe una zona con id {zona_id}.")
 
     return render(request, 'monitor/detalle.html', {'zona': detalle})
+
+def vista_resumen_zonas(request):
+    """
+    Muestra la vista general "Resumen de consumo por zona" (nuevo
+    requerimiento Fase 2): tarjetas con los totales generales y una tabla
+    con el resumen de cada zona. Toda la agregacion (conteos, sumas y
+    estado) se calcula en utils.resumen_por_zona(); esta vista solo arma
+    el contexto y renderiza la plantilla.
+    """
+    contexto = resumen_por_zona()
+    return render(request, 'monitor/resumen_zonas.html', contexto)
