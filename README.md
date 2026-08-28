@@ -114,3 +114,5 @@ La validación comprueba el tipo de cada campo de los registros de los archivos 
 
 
 .
+
+entrega 2 check 
